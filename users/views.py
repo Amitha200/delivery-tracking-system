@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import User
 
-# Create your views here.
+@api_view(['POST'])
+def register(request):
+    user = User.objects.create_user(
+        username=request.data['username'],
+        password=request.data['password'],
+        role=request.data['role']
+    )
+    return Response({"message": "User created"})
