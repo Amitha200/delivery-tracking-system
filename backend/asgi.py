@@ -1,15 +1,38 @@
+# import os
+# from channels.routing import ProtocolTypeRouter, URLRouter
+# from django.core.asgi import get_asgi_application
+# from channels.auth import AuthMiddlewareStack
+# import tracking.routing
+
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+
+# application = ProtocolTypeRouter({
+#     "http": get_asgi_application(),
+
+#     "websocket": AuthMiddlewareStack(
+#         URLRouter(
+#             tracking.routing.websocket_urlpatterns
+#         )
+#     ),
+# })
+
 import os
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
-from django.urls import path
-from tracking.consumers import TrackingConsumer
+from channels.auth import AuthMiddlewareStack
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+import tracking.routing  # ✅ correct place to import
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+
+django_asgi_app = get_asgi_application()
 
 application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
+    "http": django_asgi_app,
 
-    "websocket": URLRouter([
-        path("ws/tracking/", TrackingConsumer.as_asgi()),
-    ]),
+    "websocket": AuthMiddlewareStack(
+        URLRouter(
+            tracking.routing.websocket_urlpatterns
+        )
+    ),
 })

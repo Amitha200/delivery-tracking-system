@@ -47,6 +47,12 @@ INSTALLED_APPS = [
     'users',
     'orders',
     'notifications',
+    'reports',
+    
+    'rest_framework',
+    'rest_framework_simplejwt',
+
+    
 ]
 
 MIDDLEWARE = [

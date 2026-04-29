@@ -1,8 +1,10 @@
-from django.urls import path
-from .views import create_order, assign_agent, update_status
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import OrderViewSet
+
+router = DefaultRouter()
+router.register(r'', OrderViewSet, basename='orders')
 
 urlpatterns = [
-    path('create/', create_order),
-    path('assign/<int:id>/', assign_agent),
-    path('status/<int:id>/', update_status),
+    path('', include(router.urls)),
 ]
