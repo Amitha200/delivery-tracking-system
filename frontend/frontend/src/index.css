@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Vibrant Swiggy Orange & Secondary Colors */
+  --brand-primary: #fc8019;
+  --brand-primary-hover: #e57317;
+  --brand-dark: #121212;
+  
+  /* App Backgrounds */
+  --bg-main: #f0f2f5;       /* Light grey background like food apps */
+  --bg-card: #ffffff;       /* Pure white cards */
+  --bg-nav: rgba(255, 255, 255, 0.98);
+  
+  /* Typography Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  
+  /* Status Colors */
+  --success: #16a34a;
+  --success-bg: #dcfce3;
+  --warning: #f59e0b;
+  --warning-bg: #fef3c7;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  /* No borders for a cleaner look, but keeping variables for subtle dividers */
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  
+  /* Premium Soft Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-float: 0 20px 40px rgba(252, 128, 25, 0.15);
+
+  /* Fonts */
+  --font-heading: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Border Radius (Sleek and rounded) */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Agent Dashboard Specific Dark Mode Tokens */
+.agent-theme {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-nav: rgba(15, 23, 42, 0.95);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-light: #334155;
+  --border-medium: #475569;
+  --shadow-md: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Base Buttons */
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Utility */
+.premium-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-normal) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
